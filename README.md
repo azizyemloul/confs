@@ -1,0 +1,3 @@
+* Change default webbrower to Conkeror in LinuxMint-MATE
+gvfs-mime --set x-scheme-handler/http conkeror.desktop
+gvfs-mime --set x-scheme-handler/https conkeror.desktop
