@@ -1,0 +1,97 @@
+# This is your Bluetile configuration file.
+# Use this file to make changes to the default configuration.
+# You can see all the defaults in the file
+# /usr/share/bluetile/etc/bluetilerc
+#
+# Below are a few examples - note: Mod1 is usually the Alt key.
+# Run 'bluetile --list-identifiers' to see a complete list of all
+# possibile modifier and key names.
+
+start_dock: false
+#terminal: xterm
+#default_modifier: Mod1
+#key_launch_terminal: DefaultMod+Shift+Return
+
+# blue-ish theme where the focused window stands out more
+decoration_focused_color = #7ca3d3
+decoration_focused_text_color = white
+decoration_focused_border_color = white
+decoration_normal_color = #e3e2e1
+decoration_normal_text_color = black
+decoration_normal_border_color = black
+decoration_font = xft: Sans Bold:size=9
+window_border_focused_color = black
+window_border_normal_color = gray
+
+
+key_focus_next_window: DefaultMod+Down
+key_focus_prev_window: DefaultMod+Up
+
+key_swap_with_next_window: DefaultMod+Shift+Down
+key_swap_with_prev_window: DefaultMod+Shift+Up
+
+key_shrink_master_area: DefaultMod+Shift+Left
+key_expand_master_area: DefaultMod+Shift+Right
+
+
+key_inc_windows_in_master_area: DefaultMod+Ctrl+Up
+key_dec_windows_in_master_area: DefaultMod+Ctrl+Down
+
+key_switch_to_layout_stacked: DefaultMod+q
+key_restart_bluetile: DefaultMod+Shift+r
+
+# switching workspaces
+key_toggle_workspace: DefaultMod+b
+# key_switch_to_workspace_0: DefaultMod+agrave
+# key_switch_to_workspace_1: DefaultMod+ampersand
+# key_switch_to_workspace_2: DefaultMod+eacute
+# key_switch_to_workspace_3: DefaultMod+quotedbl
+# key_switch_to_workspace_4: DefaultMod+apostrophe
+# key_switch_to_workspace_5: DefaultMod+parenleft
+# key_switch_to_workspace_6: DefaultMod+minus
+# key_switch_to_workspace_7: DefaultMod+egrave
+# key_switch_to_workspace_8: DefaultMod+underscore
+# key_switch_to_workspace_9: DefaultMod+cedilla
+
+key_switch_to_workspace_0: DefaultMod+F10
+key_switch_to_workspace_1: DefaultMod+F1
+key_switch_to_workspace_2: DefaultMod+F2
+key_switch_to_workspace_3: DefaultMod+F3
+key_switch_to_workspace_4: DefaultMod+F4
+key_switch_to_workspace_5: DefaultMod+F5
+key_switch_to_workspace_6: DefaultMod+F6
+key_switch_to_workspace_7: DefaultMod+F7
+key_switch_to_workspace_8: DefaultMod+F8
+key_switch_to_workspace_9: DefaultMod+F9
+
+# moving clients to workspaces
+# key_shift_window_to_workspace_0: DefaultMod+Shift+agrave
+# key_shift_window_to_workspace_1: DefaultMod+Shift+ampersand
+# key_shift_window_to_workspace_2: DefaultMod+Shift+
+# key_shift_window_to_workspace_3: DefaultMod+Shift+quotedbl
+# key_shift_window_to_workspace_4: DefaultMod+Shift+apostrophe
+# key_shift_window_to_workspace_5: DefaultMod+Shift+parenleft
+# key_shift_window_to_workspace_6: DefaultMod+Shift+minus
+# key_shift_window_to_workspace_7: DefaultMod+Shift+
+# key_shift_window_to_workspace_8: DefaultMod+Shift+underscore
+# key_shift_window_to_workspace_9: DefaultMod+Shift+
+
+key_shift_window_to_workspace_0: DefaultMod+Shift+F10
+key_shift_window_to_workspace_1: DefaultMod+Shift+F1
+key_shift_window_to_workspace_2: DefaultMod+Shift+F2
+key_shift_window_to_workspace_3: DefaultMod+Shift+F3
+key_shift_window_to_workspace_4: DefaultMod+Shift+F4
+key_shift_window_to_workspace_5: DefaultMod+Shift+F5
+key_shift_window_to_workspace_6: DefaultMod+Shift+F6
+key_shift_window_to_workspace_7: DefaultMod+Shift+F7
+key_shift_window_to_workspace_8: DefaultMod+Shift+F8
+key_shift_window_to_workspace_9: DefaultMod+Shift+F9
+
+
+# multi head: switching and moving clients
+key_switch_to_screen_0: DefaultMod+z
+key_switch_to_screen_1: DefaultMod+e
+key_switch_to_screen_2: DefaultMod+r
+key_shift_window_to_screen_0: DefaultMod+Shift+z
+key_shift_window_to_screen_1: DefaultMod+Shift+e
+key_shift_window_to_screen_2: DefaultMod+Shift+r
