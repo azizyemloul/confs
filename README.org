@@ -2,3 +2,5 @@
 : gvfs-mime --set x-scheme-handler/http conkeror.desktop
 
 : gvfs-mime --set x-scheme-handler/https conkeror.desktop
+* Virtualbox
+créer vboxnet0
