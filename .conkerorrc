@@ -5,23 +5,27 @@ mode_line_add_buttons(standard_mode_line_buttons, true);
 session_pref("xpinstall.whitelist.required", false);
 user_pref("intl.charset.default", getenv("LANG").split(".")[1]);
 
-editor_shell_command = "emacsclient -c";
+editor_shell_command = "emacsclient";
+view_source_use_external_editor = true;
+
 read_buffer_show_icons = true;
 url_completion_use_history = true;
 url_completion_use_bookmarks = true;
 cwd = get_home_directory();
-cwd.append("Downloads")
+cwd.append("Téléchargements")
 
 require("new-tabs.js");
 require("session.js");
+require("save.js");
 require("favicon");
 add_hook("mode_line_hook", mode_line_adder(buffer_icon_widget), true);
 add_hook("mode_line_hook", mode_line_adder(buffer_count_widget), true);
 add_hook("mode_line_hook", mode_line_adder(downloads_status_widget)); //show the active download count.
 
-
 define_webjump("g",    "http://www.google.fr/search?q=%s");
 define_webjump("y",   "http://www.youtube.com/results?search_query=%s&aq=f");
+define_webjump("w",   "http://fr.wikipedia.org/wiki/%s");
+
 
 // copy url with C-c u
 interactive("copy-url",
@@ -33,7 +37,10 @@ interactive("copy-url",
         }
 );
 define_key(default_global_keymap, "C-c u", "copy-url");
-
+define_key(default_global_keymap, "k", "cmd_scrollLineUp");
+define_key(default_global_keymap, "j", "cmd_scrollLineDown");
+define_key(default_global_keymap, "K", "scroll-top-left");
+define_key(default_global_keymap, "J", "cmd_scrollBottom");
 
 // reload conkerorrc with C-c r
 interactive("reload-config", "reload conkerorrc",
@@ -95,10 +102,6 @@ for (let i = 0; i < 10; ++i) {
     define_switch_buffer_key(String((i+1)%10), i);
 }
 
-
-
-
-
 // org-protocol stuff
 function org_capture (url, title, selection, window) {
     var cmd_str =
@@ -112,9 +115,29 @@ function org_capture (url, title, selection, window) {
 interactive("org-capture", "Clip url, title, and selection to capture via org-protocol",
           function (I) {
               org_capture(encodeURIComponent(I.buffer.display_uri_string),
-                        encodeURIComponent(I.buffer.document.title),
-                                encodeURIComponent(I.buffer.top_frame.getSelection()),
+                          encodeURIComponent(I.buffer.document.title),
+                          encodeURIComponent(I.buffer.top_frame.getSelection()),
                         I.window);
           });
 // capture with C-c c
 define_key(content_buffer_normal_keymap, "C-c c", "org-capture");
+
+homepage = "http://google.fr";
+PATH.push("/usr/lib/conkeror/");
+
+interactive("list-bookmarks",
+    "List all bookmarks",
+    function (I) {
+        var data = "", error = "";
+        var result = yield shell_command(
+            "conkeror-bookmarks.py --html",
+            $fds = [{ output: async_binary_string_writer("") },
+                    { input: async_binary_reader(function (s) data+=s||"") },
+                    { input: async_binary_reader(function (s) error+=s||"") }]);
+        if (result != 0 || error != "")
+            throw new interactive_error("status "+result+", "+error);
+        var uri = "data:text/html;charset=utf-8;base64,"+btoa(data);
+        browser_object_follow(I.buffer, OPEN_NEW_BUFFER, load_spec({ uri: uri }));
+    });
+
+
